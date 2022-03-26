@@ -122,14 +122,14 @@ USE_I18N = True
 USE_TZ = True
 
 # cloudinary.config(
-#   cloud_name = "dm5sghr3w",
-#   api_key = "887567247769925",
-#   api_secret = "fOXJkx1nRnoFCh3FFPmfIH3fr_I"
+#   cloud_name = "",
+#   api_key = "",
+#   api_secret = ""
 # )
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dm5sghr3w',
-    'API_KEY': '887567247769925',
-    'API_SECRET': 'fOXJkx1nRnoFCh3FFPmfIH3fr_I'
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('API_KEY'),
+    'API_SECRET': os.environ.get('API_SECRET'),
 }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

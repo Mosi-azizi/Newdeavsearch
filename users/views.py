@@ -50,7 +50,7 @@ def registerUser(request):
             user.save()
             messages.success(request,'User save')
             login(request, user)
-            return  redirect('users:login')
+            return  redirect('users:edit-account')
         else:
             messages.error(request,'An error has occurred during registrations' )
 
