@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Project
+from .models import Project, Tag
 from .forms import ProjectForm
 from django.contrib.auth.decorators import login_required
+from .utils import searchProjects
 
 # Create your views here.
 
@@ -13,9 +14,9 @@ def Home(request):
     return render(request,'home.html',context)
 
 def projects(request):
-    projects = Project.objects.all()
+    projects, search_query = searchProjects(request)
     context ={
-        'projects':projects
+        'projects':projects,'search_query':search_query
     }
     return render(request, 'projects/projects.html', context)
 
@@ -43,7 +44,7 @@ def createProject(request):
             project.save()
 
 
-            return redirect('projects:projects')
+            return redirect('users:account')
     context = {
         'form':form
     }
@@ -59,7 +60,7 @@ def updateProject(request,pk):
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('projects:projects')
+            return redirect('users:account')
     context = {
         'form':form
     }
@@ -76,4 +77,4 @@ def deleteProject(request, pk):
     context = {
         'object':project
     }
-    return  render(request,'projects/delete_object.html',context)
+    return  render(request,'delete_template.html',context)
