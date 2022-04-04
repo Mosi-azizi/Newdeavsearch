@@ -4,29 +4,6 @@
 {% block content %}
 
 
-{#    <table>#}
-{#        <tr>#}
-{#            <th>ID</th>#}
-{#            <th>Project</th>#}
-{#            <th>Positive Votes</th>#}
-{#            <th>Total Votes</th>#}
-{#            <th>Date Created</th>#}
-{#        </tr>#}
-{#        {% for project in projects%}#}
-{#        <tr>#}
-{#            <td>{{ project.id }}</td>#}
-{#            <td>{{ project.title }}</td>#}
-{#            <td>{{ project.vote_ratio }} %</td>#}
-{#            <td>{{ project.vote_total }}</td>#}
-{#            <td>{{ project.created }}</td>#}
-{#            <td><a href="{% url 'projects:update-project' project.id %}">Edit</a></td>#}
-{#            <td><a href="{% url 'projects:delete-project' project.id %}">Delete</a></td>#}
-{#            <td><a href="{% url 'projects:project' project.id %}">View</a></td>#}
-{##}
-{#        </tr>#}
-{#        {% endfor %}#}
-{#    </table>#}
-
  <!-- Main Section -->
   <main class="projects">
     <section class="hero-section text-center">
@@ -36,7 +13,7 @@
         </div>
 
         <div class="hero-section__search">
-          <form class="form" action="{% url 'projects:projects' %}" method="get">
+          <form id="searchForm" class="form" action="{% url 'projects:projects' %}" method="get">
             <div class="form__field">
               <label for="formInput#search">Search By Projects </label>
               <input class="input input--text" id="formInput#search" type="text" name="search_query"
