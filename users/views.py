@@ -14,9 +14,9 @@ from .utils import searchProfiles, paginateProfiles
 def loginUser(request):
     page = 'login'
     if request.user.is_authenticated:
-        return redirect('users:profiles')
+        return redirect('users:profile')
     if request.method == 'POST':
-        username = request.POST['username']
+        username = request.POST['username'].lower()
         password = request.POST['password']
 
         try:
@@ -27,7 +27,7 @@ def loginUser(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('users:profiles')
+            return redirect(request.GET['next'] if 'next' in request.GET else 'users:account')
         else:
             messages.error(request,'username or pass incorrect')
 
