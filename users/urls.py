@@ -13,6 +13,9 @@ urlpatterns = [
     path('delete-skill/<str:pk>',views.deleteSkill,name = 'delete-skill'),
     path('edit-account/',views.editAccount, name='edit-account'),
     path('logout/',views.logoutUser, name='logout'),
-    path('profile/<str:pk>',views.userProfile, name= 'profile')
+    path('profile/<str:pk>',views.userProfile, name= 'profile'),
+    path('inbox/',views.inbox, name= 'inbox'),
+    path('message/<str:pk>',views.viewMessage, name='message'),
+    path('create-message/<str:pk>',views.createMessage,name='crate-message')
 
 ]

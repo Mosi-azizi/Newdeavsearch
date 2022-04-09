@@ -19,10 +19,11 @@
           <li class="header__menuItem"><a href="{% url 'users:profiles' %}">Developers</a></li>
           <li class="header__menuItem"><a href="{% url 'projects:projects'%}">Projects</a></li>
 
-          <li class="header__menuItem"><a href="">Inbox</a></li>
+
+            {% if user.is_authenticated %}
+          <li class="header__menuItem"><a href="{% url 'users:inbox' %}">Inbox</a></li>
           <li class="header__menuItem"><a href="{% url 'users:account'  %}">My Account</a></li>
           <li class="header__menuItem"><a href="{% url 'projects:create-project' %}" class="btn btn--sub">Add Project</a></li>
-            {% if user.is_authenticated %}
           <li class="header__menuItem"><a href="{% url 'users:logout' %}" class="btn btn--sub">Logout</a></li>
           {% else %}
 
