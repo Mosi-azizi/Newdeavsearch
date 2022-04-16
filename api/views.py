@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ProjectSerializer
+from .serializers import ProjectSerializer,ProfileSerializer
 from projects.models import Project
+from users.models import Profile
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -29,3 +30,16 @@ def getProject(request, pk):
     projects = Project.objects.get(id=pk)
     serializer = ProjectSerializer(projects, many=False)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def getProfiles(request):
+    profiles = Profile.objects.all()
+    serializer = ProfileSerializer(profiles, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getProfile(reqeuset, pk):
+    profile = Profile.objects.get(id=pk)
+    serializer = ProfileSerializer(profile, many=False)
+    return  Response(serializer.data)
+
