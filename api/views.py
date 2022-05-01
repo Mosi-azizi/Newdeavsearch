@@ -21,7 +21,7 @@ def getRoutes(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])  #Same @logging_required
+# @permission_classes([IsAuthenticated])  #Same @logging_required
 def getProjects(request):
     # print('USER: ',request.user)
     projects = Project.objects.all()
